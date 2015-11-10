@@ -16,13 +16,13 @@
 }
 
 .hero {
-  background: #559CC2 url('../images/bg-pattern.png') no-repeat center top;
+  background: #36a4e2 url('../images/bg-pattern.png') no-repeat center top;
   color: white;
   min-height: 400px;
   padding: 20px 0 40px;
 
   @media (min-width: $screen-md-min) { 
-    background: #559CC2;
+    background: #36a4e2;
     padding: 40px 0 40px; 
   }
 
