@@ -6,22 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Aprende las bases del desarrollo Web gratis en 8 semanas" />
 
-  <!-- Twitter Card data --> 
-  <meta name="twitter:card" content="summary"> 
-  <meta name="twitter:title" content="Aprende Desarrollo Web"> 
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Aprende Desarrollo Web">
   <meta name="twitter:description" content="Aprende las bases del desarrollo Web gratis en 8 semanas">
   <meta name="twitter:image" content="http://aprendedesarrolloweb.com/images/aprende-desarrollo-web-bg.png">
 
-  <!-- Open Graph data --> 
-  <meta property="og:title" content="Aprende Desarrollo Web" /> 
-  <meta property="og:type" content="article" /> 
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Aprende Desarrollo Web" />
+  <meta property="og:type" content="article" />
   <meta property="og:url" content="http://aprendedesarrolloweb.com/" />
   <meta property="og:image" content="http://aprendedesarrolloweb.com/images/aprende-desarrollo-web-bg.png" />
-  <meta property="og:description" content="Aprende las bases del desarrollo Web gratis en 8 semanas" /> 
+  <meta property="og:description" content="Aprende las bases del desarrollo Web gratis en 8 semanas" />
   <meta property="og:site_name" content="Aprende Desarrollo Web" />
 
   <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+
+  <!-- ConvertLoop -->
+  <script>
+  !function(t,e,n,s) { t.DPEventsFunction=s,t[s]=t[s] || function() { (t[s].q=t[s].q||[]).push(arguments) }; var c=e.createElement("script"),o=e.getElementsByTagName("script")[0]; c.async=1,c.src=n,o.parentNode.insertBefore(c,o); }(window, document, "http://www.convertloop.co/v1/loop.min.js", "_dp");
+
+  _dp("configure", { appId: "ed9f94bd" });
+  </script>
+  <!-- End ConvertLoop -->
 </head>
 <body>
   <!-- Google Tag Manager -->
@@ -40,9 +48,9 @@
         <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-0">
           <h1 class="title">Aprende las bases del Desarrollo Web en 8 semanas</h1>
           <p class="subtitle">Recibe una nueva lección en tu e-mail cada semana en este curso <strong>gratis</strong> diseñado para principiantes.</p>
-          <form action="//camp.us9.list-manage.com/subscribe/post?u=7ceeee60942d89164146c9ddf&amp;id=d64474c927" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate row" target="_blank" novalidate>
+          <form id="subscribe-form" class="subscribe-form validate row">
             <div class="form-group col-md-7 col-lg-8">
-              <input type="email" name="EMAIL" id="mce-EMAIL" class="form-control input-lg" placeholder="Ingresa tu Email" required>
+              <input type="email" id="email" class="form-control input-lg" placeholder="Ingresa tu Email" required>
             </div>
             <div style="position: absolute; left: -5000px;"><input type="text" name="b_7ceeee60942d89164146c9ddf_d64474c927" tabindex="-1" value=""></div>
             <div class="form-group col-md-5 col-lg-4">
@@ -161,12 +169,12 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-          <form action="//camp.us9.list-manage.com/subscribe/post?u=7ceeee60942d89164146c9ddf&amp;id=d64474c927" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" class="row" novalidate>
-            <div class="form-group col-md-7 col-lg-7">
-              <input type="email" name="EMAIL" id="mce-EMAIL" class="form-control input-lg" placeholder="Ingresa tu Email" required>
+          <form id="subscribe-form" class="subscribe-form validate row">
+            <div class="form-group col-md-7">
+              <input type="email" id="email" class="form-control input-lg" placeholder="Ingresa tu Email" required>
             </div>
             <div style="position: absolute; left: -5000px;"><input type="text" name="b_7ceeee60942d89164146c9ddf_d64474c927" tabindex="-1" value=""></div>
-            <div class="form-group col-md-5 col-lg-5">
+            <div class="form-group col-md-5">
               <button type="submit" class="cta btn btn-primary btn-lg">Empieza ahora!</button>
             </div>
           </form>
@@ -182,5 +190,60 @@
   </footer>
 
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53d2833b1967bc57" async="async"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    var validateForm = function(el) {
+      var isValid = true;
+      if (!validateField($('#email', el), isBlank, "Campo requerido")) {
+        $('#email', el).one('change', function() {
+          validateForm(el);
+        });
+        isValid = false;
+      } else if (!validateField($('#email', el), isEmail, "Email inválido")) {
+        $('#email', el).one('change', function() {
+          validateForm(el);
+        });
+        isValid = false;
+      }
+      return isValid;
+    }
+
+    var validateField = function(selector, validFn, message) {
+      var formGroup = selector.closest('.form-group');
+      formGroup.removeClass("has-error");
+      $('.help-block', formGroup).remove();
+
+      var val = selector.val();
+      if (!validFn(val)) {
+        selector.closest('.form-group').addClass("has-error").append('<span class="help-block">' + message + '</span>');
+        return false;
+      }
+
+      return true;
+    };
+
+    var isBlank = function(val) {
+      return val.trim().length !== 0;
+    };
+
+    var isEmail = function(val) {
+      return /(.+)@(.+){2,}\.(.+){2,}/.test(val);
+    }
+
+    $('.subscribe-form').on('submit', function(e) {
+      e.preventDefault();
+
+      var isValid = validateForm($(this));
+
+      if (isValid) {
+        _dp('track', 'subscribed-aprende-desarrollo-web', {
+            person: {
+              email: $('#email', $(this)).val()
+            }
+          });
+        $('.subscribe-form').replaceWith('<p class="thanks">Todo listo para que empieces a aprender. En unos minutos recibirás en tu correo la primera lección!</p>')
+      }
+    });
+  </script>
 </body>
 </html>

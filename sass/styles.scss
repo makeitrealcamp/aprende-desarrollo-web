@@ -7,8 +7,8 @@
 // Import Bootstrap for Sass
 @import "bootstrap";
 
-.cta { 
-  width: 100%; 
+.cta {
+  width: 100%;
 
   @media (min-width: $screen-md-min) {
     margin-left: -15px;
@@ -21,9 +21,9 @@
   min-height: 400px;
   padding: 20px 0 40px;
 
-  @media (min-width: $screen-md-min) { 
+  @media (min-width: $screen-md-min) {
     background: #36a4e2;
-    padding: 40px 0 40px; 
+    padding: 40px 0 40px;
   }
 
   .title {
@@ -63,7 +63,12 @@
     margin-top: 60px;
   }
 
-  // img { opacity: 0.8; }
+  p.thanks {
+    margin-top: 40px;
+    font-size: 18px;
+
+    @media (min-width: $screen-md-min) { font-size: 21px; }
+  }
 }
 
 section {
@@ -123,7 +128,7 @@ footer {
 
     a { text-decoration: none; }
 
-    span { 
+    span {
       display: block;
       font-size: 24px;
     }
