@@ -243,8 +243,22 @@
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ email })
-        }).then(function() {
-          window.location.href = 'thanks.html';
+        }).then(function(response) {
+          if (!response.ok) {
+            if (response.status === 422) {
+              $('.subscribe-form').replaceWith('<p class="error">Ya existe el email. <a href="https://app.aprendedesarrolloweb.com/">Haz click acá para ingresar</a></p>')
+            }
+          } else {
+            window.location.href = 'thanks.html';
+          }
+        }).then(function(response) {
+          if (!response.ok) {
+            if (response.status === 422) {
+              $('.subscribe-form').replaceWith('<p class="error">Ya existe el email. <a href="https://app.aprendedesarrolloweb.com/">Haz click acá para ingresar</a></p>')
+            }
+          } else {
+            $('.subscribe-form').replaceWith('<p class="thanks">Todo listo para que empieces a aprender. En unos minutos recibirás un correo de activación para que empieces tu primera lección!</p>')
+          }
         }).catch(function(e) {
           console.log(e)
           $('.subscribe-form').replaceWith('<p class="error">Ocurrió un error inesperado, por favor refresca la página e intenta nuevamente.</p>')
