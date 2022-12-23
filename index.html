@@ -251,9 +251,6 @@
 
       var email = $('#email', $(this)).val()
       if (isValid) {
-        _dp('track', 'subscribed-aprende-desarrollo-web', {
-            person: { email }
-          });
         fetch("https://app.aprendedesarrolloweb.com/api/invitations/send", {
           method: "POST",
           headers: {
