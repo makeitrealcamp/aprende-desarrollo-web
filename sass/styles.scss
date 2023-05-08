@@ -7,23 +7,65 @@
 // Import Bootstrap for Sass
 @import "bootstrap";
 
-.cta {
-  width: 100%;
+$color-orange: #f04500;
+$color-blue: #0D1A59;
+$color-gray: #9CA3AF;
+
+html, body {
+  font-size: 16px;
+}
+
+.cta { 
+  width: 100%; 
 
   @media (min-width: $screen-md-min) {
     margin-left: -15px;
   }
 }
 
+.navbar-section {
+  background-color: #272727;
+  margin: 0;
+  padding: 2rem 3vw;
+  .login-btn {
+
+
+    a{
+      align-items: center;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      font-size: 1rem;
+      font-weight: 500;
+      gap: 32px;
+      height: 49px;
+      justify-content: center;
+      letter-spacing: 1.25px;
+      line-height: 180%;
+      min-width: 182px;
+      padding: 0 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border: 1px solid #fff;
+    }
+  }
+}
+
 .hero {
-  background: #36a4e2 url('../images/bg-pattern.png') no-repeat center top;
+  background: #272727;
   color: white;
   min-height: 400px;
   padding: 20px 0 40px;
 
-  @media (min-width: $screen-md-min) {
-    background: #36a4e2;
-    padding: 40px 0 40px;
+  @media (min-width: $screen-md-min) { padding: 40px 0 40px; }
+
+  .title::after {
+    color: $color-orange;
+    content: "_";
   }
 
   .title {
@@ -31,17 +73,12 @@
     line-height: 1.2;
     font-weight: bold;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 60px;
 
     @media (min-width: $screen-md-min) {
-      font-size: 48px;
+      font-size: 52px;
       line-height: 1;
       text-align: left;
-    }
-
-    @media (min-width: $screen-lg-min) {
-      font-size: 52px;
-      margin-top: 60px;
     }
   }
 
@@ -56,24 +93,45 @@
       text-align: left;
     }
 
-    strong { font-weight: normal; }
+    strong { font-weight: 700; text-decoration-line: underline; }
   }
 
   form {
     margin-top: 60px;
   }
 
-  p {
-    font-size: 18px;
-    @media (min-width: $screen-md-min) { font-size: 21px; }
-
-    &.error, &.thanks {
-      margin-top: 40px;
-    }
+  img { opacity: 0.8; }
+  
+  .btn-primary {
+    background: $color-orange;
+    border-color:$color-orange;
+    color: #fff;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+    font-weight: 500;
+    gap: 32px;
+    height: 49px;
+    justify-content: center;
+    letter-spacing: 1.25px;
+    line-height: 180%;
+    min-width: 182px;
+    padding: 0 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
-  p.error {
-    color: $brand-danger;
+  .form-group {
+    padding-right: 0;
+    input {
+      background: transparent;
+    }
   }
 }
 
@@ -96,69 +154,241 @@ section {
 
 section.info {
   padding-top: 80px;
+
+  .row {
+    display: flex;
+    align-items: center;
+  }
+
+  .description {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.25px;
+    color: #212F65;
+  }
 }
 
 section.instructor {
+  background-color: #333333;
+  color: #fff;
   .instructor-name {
     font-size: 16px;
     font-weight: bold;
     margin-top: 15px;
+    text-align: center;
+    img {
+      margin: 0 0.5rem;
+    }
   }
 
-  img {
-    width: 100px;
+  h2 {
+    color: $color-orange;
+    font-size: 38px;
+    line-height: 1.2;
+    text-align: center;
+    
+  }
+
+  .card {
+    padding: 24px;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    margin: 1rem;
+
+
+    .card-img {
+      height: 100%;
+      width: 100%;
+    }
+
+    .card-body {
+      color: #333333;
+      font-size: 16px;
+    }
   }
 }
 
 section.lessons {
-  .table {
-    background: white;
+  .lessons-heading {
+    text-align: center;
+    .title {
+      margin: 0;
+      margin: 1rem 0;
+      font-size: 3rem;
+      font-weight: 700;
+      color: $color-blue;
+    }
+
+    .description {
+      font-size: 1rem;
+      font-weight: 400;
+      color: $color-gray;
+    }
+  }
+  .tab-menu {
+
+    margin-top: 4rem;
+    padding: 1rem 2rem;
+    ul {
+      text-align: center;
+      li {
+        width: 15%;
+        display: inline-block;
+
+        button~label {
+          width: 100%;
+        }
+
+        button span {
+          font-size: 1rem;
+        }
+
+        label {
+          color: #272727;
+          font-weight: bold;
+        }
+
+        button {
+          background-color: #fff;
+          border: 2px solid #272727;
+          color: #272727;
+          border-radius: 50%;
+          width: 56px;
+          height: 56px;
+        }
+
+        button:before {
+          content: '';
+          padding: 2px 5px;
+          background-color: white;
+          position: absolute;
+          transform: translate(-16px, -7px) rotate(45deg)
+        }
+
+        button.active, button.active~label {
+          border-color: $color-orange ;
+          color: $color-orange;
+        }
+      }
+    }
   }
 }
 
 section.faq {
-  .question {
-    margin-bottom: 30px;
+  .title {
+    text-align: center;
+    color: $color-orange;
+    font-weight: 700;
+  }
+  .questions{
+     
+    .question {
+      border: none;
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
+      padding: 0.5rem 0;
+      .panel-heading {
+        background: none;
+        .panel-title a {
+          font-style: normal;
+          font-weight: 700;
+          font-size: 1rem;
+          line-height: 1.5rem;
+          color: #0D1A59;
+        }
 
-    .question-title {
-      font-weight: bold;
-      margin-bottom: 15px;
+        a:hover {
+          text-decoration: none;
+        }
+      }
+      .panel-body {
+        border: none;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        color: #303A42;
+      }
+    }
+  }
+  
+}
+
+section.contact {
+  .container-bg{
+    padding: 2rem;;
+    background-color: $color-blue;
+    border-radius: 5px;
+  }
+  .info-questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+    color: #fff;
+
+    h2 { 
+        font-weight: 400;
+        font-size: 2rem;
+        text-align: center;
+        margin: 1rem;
+      }
+    p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .info-buttons {
+      margin-top: 2rem;
+      
+      button, a button {
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 500;
+        gap: 32px;
+        height: 49px;
+        letter-spacing: 1.25px;
+        line-height: 180%;
+        min-width: 182px;
+        padding: 0 20px;
+        text-transform: uppercase;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid #fff;
+        background-color: transparent;
+        margin: 1rem;
+
+        img {
+          padding: 0.5rem;
+        }
+      }
+      a button {
+        background-color: $color-orange;
+        border: none;
+      }
+      
     }
   }
 }
 
 footer {
-  background: #303030;
-  color: white;
-  padding: 60px 0;
-
   .powered-by {
-    text-align: center;
-    margin-top: 60px;
-
-    a { text-decoration: none; }
-
-    span {
-      display: block;
-      font-size: 24px;
-    }
-
-    img { 
-      width: 250px;
-      margin-top: 10px; 
-    }
+    display: flex;
+    justify-content: center;
   }
-
   p {
-    font-size: 18px;
-    @media (min-width: $screen-md-min) { font-size: 21px; }
-
-    &.error, &.thanks {
-      margin-top: 40px;
-    }
-  }
-
-  p.error {
-    color: $brand-danger;
+    color: $color-gray;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
   }
 }
